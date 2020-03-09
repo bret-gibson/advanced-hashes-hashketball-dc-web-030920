@@ -3,9 +3,9 @@ require 'pry'
 def game_hash
   {:home =>
     {:team_name => "Brooklyn Nets",
-     :colors => ["Black", "White"],
-     :players =>
-     [{ :player_name => "Alan Anderson",
+    :colors => ["Black", "White"],
+    :players =>
+    [{ :player_name => "Alan Anderson",
         :number => 0,
         :shoe => 16,
         :points => 22,
@@ -59,9 +59,9 @@ def game_hash
 
     :away =>
       {:team_name => "Charlotte Hornets",
-       :colors => ["Turquoise", "Purple"],
-       :players =>
-       [{ :player_name => "Jeff Adrien",
+      :colors => ["Turquoise", "Purple"],
+      :players =>
+      [{ :player_name => "Jeff Adrien",
           :number => 4,
           :shoe => 18,
           :points => 10,
@@ -90,27 +90,27 @@ def game_hash
           :steals => 4,
           :blocks => 5,
           :slam_dunks => 5
-         },
-         { :player_name => "Ben Gordon",
-           :number => 8,
-           :shoe => 15,
-           :points => 33,
-           :rebounds => 3,
-           :assists => 2,
-           :steals => 1,
-           :blocks => 1,
-           :slam_dunks => 0
-         },
-         { :player_name => "Kemba Walker",
-           :number => 33,
-           :shoe => 15,
-           :points => 6,
-           :rebounds => 12,
-           :assists => 12,
-           :steals => 7,
-           :blocks => 5,
-           :slam_dunks => 12
-         }]
+        },
+        { :player_name => "Ben Gordon",
+          :number => 8,
+          :shoe => 15,
+          :points => 33,
+          :rebounds => 3,
+          :assists => 2,
+          :steals => 1,
+          :blocks => 1,
+          :slam_dunks => 0
+        },
+        { :player_name => "Kemba Walker",
+          :number => 33,
+          :shoe => 15,
+          :points => 6,
+          :rebounds => 12,
+          :assists => 12,
+          :steals => 7,
+          :blocks => 5,
+          :slam_dunks => 12
+        }]
       }
   }
 end
@@ -118,7 +118,7 @@ end
 def num_points_scored(player_name)
   game_hash.each do |location, team|
     team.each do |attribute, data|
-      if attribute == :players
+      if (attribute == :players)
         data.each do |data_item|
           if data_item[:player_name] == player_name
             return data_item[:points]
@@ -268,7 +268,29 @@ def player_with_longest_name
 end
 
 def long_name_steals_a_ton?
-  puts player_with_longest_name
+  lns = 0
+  game_hash.each do |location, team|
+    team.each do |attribute, data|
+      if attribute == :players
+        data.each do |data_item|
+          if data_item[:player_name] == player_with_longest_name
+            lns = data_item[:steals]
+          end
+=begin
+          if data_item[:steals] > lns
+            puts lns
+            return false
+          else
+            puts lns
+            return true
+          end
 
+=end
+
+        end
+      end
+    end
+  end
+  puts lns
 end
 pp game_hash
